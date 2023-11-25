@@ -1,0 +1,88 @@
+@baseUrl = http://localhost:3000/api
+
+GET {{baseUrl}}/pets HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/pets/1 HTTP/1.1
+Content-Type: application/json
+
+
+### search pets by name
+GET {{baseUrl}}/pets?name=SNOW HTTP/1.1
+Content-Type: application/json
+
+### signup
+POST {{baseUrl}}/signup HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "upnb27@gmail.com",
+  "password": "231125test"
+}
+
+### signin
+POST {{baseUrl}}/signin HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "upnb27@gmail.com",
+  "password": "231125test"
+}
+
+### upload image
+POST {{baseUrl}}/images HTTP/1.1
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="file"; filename="IMG_8730.jpg"
+Content-Type: image/jpeg
+
+< images/IMG_8730.jpg
+--MyBoundary--
+
+###
+
+POST {{baseUrl}}/pets HTTP/1.1
+Content-Type: application/json
+
+{
+  "pet": {
+    "name": "Fido",
+    "imageUrl": "https://cdn2.thecatapi.com/images/xBR2jSIG7.jpg",
+    "birthDate": "2020-01-01T00:00:00.000Z",
+    "gender": "Female",
+    "ownerId": 1
+  }
+}
+
+###
+
+PUT {{baseUrl}}/pets HTTP/1.1
+Content-Type: application/json
+
+{
+  "pet": {
+    "gender": "Female"
+  }
+}
+
+
+###
+
+DELETE {{baseUrl}}/pets HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+POST {{baseUrl}}/pets/1/weights HTTP/1.1
+Content-Type: application/json
+
+{
+  "weight": {
+    "weight": 10.0,
+    "petId": 1
+  }
+}
